@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 使用viewport进行移动端页面布局的控制。以下内容说明：[宽度适应设备] + [初始缩放比例1:1]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 优先使用最新的IE版本  -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="validate.css">
+    <title>登录界面</title>
+</head>
+<body>
+	
+	<!-- <script src="validate.js"></script> -->
+	
+    <div class="container">
+        <form id="form" class="form">
+            <h2>注册</h2>
+            <div class="form-control">
+                <label for="username">姓名:
+					<span class="necessary">*</span>
+				</label>
+                <input type="text" id="username" placeholder="请输入姓名" 
+				onblur="checkNameAndPwd(this, USERNAME_MIN, USERNAME_MAX)">
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="email">邮箱:
+					<span class="necessary">*</span>
+				</label>
+                <input type="text" id="email" placeholder="请输入邮箱" onblur="checkEmail(this)">
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="pwd">输入密码:
+					<span class="necessary">*</span>
+				</label>
+                <input type="password" id="pwd" placeholder="请输入密码" 
+				onblur="checkNameAndPwd(this, PASSWORD_MIN, PASSWORD_MAX)">
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="pwd2">确认密码:
+					<span class="necessary">*</span>
+				</label>
+                <input type="password" id="pwd2" placeholder="再次输入密码" onblur="checkPasswordsMatch(this)">
+                <small>Error message</small>
+            </div>
+            <button type="submit">提交</button>
+        </form>
+    </div>
+	
+	<script src="validate.js"></script>
+	
+	<script type="text/javascript">
+		// 提交表单 监听器
+		form.addEventListener('submit', function(e) {
+			e.preventDefault(); // 禁止掉浏览器的默认事件,只让浏览器执行我们规定的函数.
+		
+			checkSubmit([username, email, pwd, pwd2]);
+		
+		}, {
+			passive: false,
+			capture: false
+		});
+		 // capture: 表示函数是否捕获执行,
+		 // passive: 表示是否执行默认事件，true执行，false不执行
+		 // once: 是否是单次事件，如果是true，执行完事件就被销毁
+	</script>
+    
+
+</body>
+</html>
